@@ -1,0 +1,20 @@
+:root {
+  --bg: #101010;
+  --orange: #ff8a24;
+  --cream: #f6ebd9;
+  --muted: rgba(246, 235, 217, 0.62);
+  --display: 'Bebas Neue', Impact, 'Arial Narrow', sans-serif;
+  --body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--bg); }
+body { margin: 0; background: var(--bg); color: var(--cream); font-family: var(--body); line-height: 1.6;
+  -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+h1, h2, h3, h4, p { margin: 0; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+}
