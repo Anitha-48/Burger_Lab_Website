@@ -32,7 +32,7 @@ const ingredientCopy = [
   },
 ];
 
-const INGREDIENT_VIDEO = '/images/layer-burger-scrub.mp4';
+const INGREDIENT_VIDEO = `${import.meta.env.BASE_URL}images/layer-burger-scrub.mp4`;
 
 export default function IngredientExperience() {
   const sectionRef = useRef(null);
