@@ -1261,11 +1261,13 @@
   }
   .home-hero {
     min-height: 100svh;
-    padding: 100px 20px 36px;
+    align-items: flex-end;
+    padding: 100px 20px clamp(36px, 7vh, 60px);
   }
   .hero-copy { width: min(100%, 520px); }
   .hero-copy h1 { font-size: clamp(3.2rem, 13.5vw, 5rem); }
-  .hero-video { transform: translateX(4%) scale(1.13); }
+  .hero-copy blockquote { display: none; }
+  .hero-video { transform: scale(1.08); }
   .ingredients-track {
     height: calc(100svh + 2100px);
   }
