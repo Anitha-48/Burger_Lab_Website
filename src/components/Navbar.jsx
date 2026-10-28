@@ -5,6 +5,7 @@ export default function Navbar({ cart, cartCount }) {
   const [notice, setNotice] = useState('');
   const [cartOpen, setCartOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const cartItems = menuBurgers
     .filter((burger) => cart[burger.id])
     .map((burger) => ({ ...burger, quantity: cart[burger.id] }));
@@ -20,17 +21,39 @@ export default function Navbar({ cart, cartCount }) {
 
   const showNotice = (message) => {
     setCartOpen(false);
+    setMobileMenuOpen(false);
     setNotice(message);
   };
 
   return (
-    <header className={`nav${isScrolled ? ' nav--scrolled' : ''}`}>
-      <a className="logo" href="#home" aria-label="Burger Lab home">
+    <header className={`nav${isScrolled ? ' nav--scrolled' : ''}${mobileMenuOpen ? ' nav--menu-open' : ''}`}>
+      <a
+        className="logo"
+        href="#home"
+        aria-label="Burger Lab home"
+        onClick={() => setMobileMenuOpen(false)}
+      >
         BURGER<span>LAB</span>
       </a>
-      <nav className="nav-links" aria-label="Main navigation">
-        <a href="#ingredients">Ingredients</a>
-        <a href="#menu">Menu</a>
+      <button
+        className="nav-menu-toggle"
+        type="button"
+        aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+        aria-expanded={mobileMenuOpen}
+        aria-controls="main-navigation"
+        onClick={() => {
+          setNotice('');
+          setCartOpen(false);
+          setMobileMenuOpen((open) => !open);
+        }}
+      >
+        <span />
+        <span />
+        <span />
+      </button>
+      <nav className="nav-links" id="main-navigation" aria-label="Main navigation">
+        <a href="#ingredients" onClick={() => setMobileMenuOpen(false)}>Ingredients</a>
+        <a href="#menu" onClick={() => setMobileMenuOpen(false)}>Menu</a>
         <button type="button" onClick={() => showNotice('Ordering is coming soon.')}>Order</button>
         <button type="button" onClick={() => showNotice('Delivery details are coming soon.')}>Delivery</button>
         <button
@@ -39,6 +62,7 @@ export default function Navbar({ cart, cartCount }) {
           aria-expanded={cartOpen}
           onClick={() => {
             setNotice('');
+            setMobileMenuOpen(false);
             setCartOpen((open) => !open);
           }}
         >

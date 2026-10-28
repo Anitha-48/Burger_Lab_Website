@@ -15,7 +15,6 @@ function Rig({ registry }) {
   }, [camera, size, registry]);
   return null;
 }
-
 function Lights({ registry }) {
   const accent = useRef();
   useEffect(() => { registry.current.lights.accent = accent.current; }, [registry]);
